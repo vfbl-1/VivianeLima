@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "75b3d035-72f4-4a26-ad2d-f922178a2e0b",
+		"name": "API GET - PROCESSO SELETIVO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Usuários",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Response code 200\r",
+							"pm.test(\"Status esperado - 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//String Ok no response code \r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Validando a string no corpo do response\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"michael.lawson@reqres.in\");\r",
+							"});\r",
+							"\r",
+							"//Validando o header de retorno\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"//validar response \r",
+							"var res = JSON.parse(responseBody);\r",
+							"const usuarioResponse ={\r",
+							" \"properties\":{\r",
+							"      \"data\":{\r",
+							"            \"id\":{\r",
+							"             \"type\": \"number\"\r",
+							"           },\r",
+							"         \"email\":{\r",
+							"             \"type\": \"string\"\r",
+							"         },\r",
+							"         \"first_name\":{\r",
+							"             \"type\": \"string\"\r",
+							"         },\r",
+							"         \"last_name\":{\r",
+							"          \"type\": \"string\" \r",
+							"         },\r",
+							"          \"avatar\":{\r",
+							"          \"type\": \"string\" \r",
+							"         },\r",
+							"\r",
+							"      } \r",
+							" }\r",
+							"};\r",
+							"\r",
+							" pm.test(\"Response Body válido. Atributos esperados retornados com sucesso. Tipo e Tamanho corretos.\", function() {\r",
+							" const valid = tv4.validate(res, usuarioResponse, null, true);\r",
+							" \r",
+							" if (!valid) {\r",
+							"    pm.expect(tv4.error.message).to.eql(\"\");\r",
+							"  } else {\r",
+							"      pm.expect(valid).to.be.true;\r",
+							" }\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2/",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2/"
+						}
+					]
+				},
+				"description": "Teste para buscar usuários.\r\n\r\nResultados esperados:\r\n-Response code: 200\r\n-String \"OK\" no corpo do response\r\n- Validando a string no corpo do response\r\n- Validar Reponse"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Usuário especifico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Response code 200\r",
+							"pm.test(\"Status esperado - 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//String Ok no response code \r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Validando a string no corpo do response\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"janet.weaver@reqres.in\");\r",
+							"});\r",
+							"\r",
+							"//Validando o header de retorno\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				},
+				"description": "Teste para buscar usuário especifico.\r\n\r\nResultados esperados:\r\n-Response code: 200\r\n-String \"OK\" no corpo do response\r\n- Validando a string no corpo do response"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Usuário- Informando ID inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Response code 400\r",
+							"pm.test(\"Status code is 400\", function() {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/27777",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"27777"
+					]
+				},
+				"description": "Teste de exceção - buscar usuário inválido.\r\n\r\nResultados esperados:\r\n-Response code: 400"
+			},
+			"response": []
+		}
+	]
+}

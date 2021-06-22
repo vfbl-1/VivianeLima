@@ -1,0 +1,27 @@
+1)Teste para buscar usuários.
+
+Técnica utilizada foram testes funcionais com cenários de sucesso, utilizando o Postman como ferramenta na primeira API foram realizados cenários de sucesso como:
+- Validação de response
+- Validação de String "OK" no corpo do response
+- Validação de String "Email" no corpo do response
+- Validaação do Reponse - Este cenário não tinha informações suficientes, como tipo e tamanho dos campos, coloquei apenas para exemplificar alguns tipos de testes que realizamos em apis GET.
+
+2)Teste para buscar usuários especifico.
+
+Técnica utilizada foram testes funcionais com cenários de sucesso, utilizando o Postman como ferramenta na segunda API foram realizados cenários de sucesso como:
+- Validação de response
+- Validação de String "OK" no corpo do response
+- Validação de String "Email" no corpo do response
+
+3)Busar usuário inválido
+Também foi realizado um teste  com cenário de exceção onde busco um usuário inválido, esse falha pq o esperado o code 400 e a API retona 404
+Teste de exceção - buscar usuário inválido.
+
+Resultados esperado:
+-Response code: 400
+
+
+
+
+
+
